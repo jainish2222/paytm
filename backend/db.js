@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://127.0.0.1:27017")
+// const { MONGODB_URL } = require("./config");
+
+
+mongoose.connect("mongodb://127.0.0.1:27017")  
 .then(()=>("mongo connect"))
 .catch((err)=("mongoose error"))
+
+
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
