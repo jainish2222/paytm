@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
 // const { MONGODB_URL } = require("./config");
 
-
-mongoose.connect("mongodb://127.0.0.1:27017")  
-.then(()=>("mongo connect"))
-.catch((err)=("mongoose error"))
+const connectToMongoDB = async () => {
+	try {
+		await mongoose.connect('mongodb+srv://jainishkoladiya1:obLneH3HlmqBkiIY@cluster0.14fh7js.mongodb.net/?tls=true');
+		console.log("Connected to MongoDB");
+	} catch (error) {
+		console.log("Error connecting to MongoDB", error.message);
+	}
+};
+connectToMongoDB();
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -46,7 +51,7 @@ const accountSchema = new mongoose.Schema({
     }
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('Userpaytm', userSchema);
 const Account = mongoose.model('Account', accountSchema);
 module.exports = {
 	User,
