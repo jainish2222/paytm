@@ -7,15 +7,17 @@ const router = express.Router();
 
 
 router.get("/balance", authMiddleware, async (req, res) => {
+   try{
     const account = await Account.findOne({
         userId: req.userId
     });
-
     res.json({
         balance: account.balance
     })
+   }catch{
+       console.log("account not found in database")
+   }
 });
-
 
 
 

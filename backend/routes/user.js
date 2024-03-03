@@ -23,6 +23,7 @@ router.post('/signup',async (req, res) => {
  const { success } = signupBody.safeParse(req.body);
  if(!success) {
     return res.status(411).json({
+        
         message: "Incorrect inputs/signup"
     })
  }
@@ -45,7 +46,7 @@ const user = await User.create({
 const userId = user._id;
 await Account.create({
     userId,
-    balance: 1 + Math.random() * 10000
+    balance: 1 + Math.floor(Math.random() * 10000)
 })
 
 

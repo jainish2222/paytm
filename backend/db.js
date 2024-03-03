@@ -6,7 +6,6 @@ mongoose.connect("mongodb://127.0.0.1:27017")
 .then(()=>("mongo connect"))
 .catch((err)=("mongoose error"))
 
-
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -38,7 +37,7 @@ const userSchema = new mongoose.Schema({
 const accountSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId, // Reference to User model
-        ref: 'User',
+        // ref: 'User',
         required: true
     },
     balance: {
@@ -53,3 +52,4 @@ module.exports = {
 	User,
     Account
 };
+
